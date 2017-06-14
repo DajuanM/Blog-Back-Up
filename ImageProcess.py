@@ -6,22 +6,22 @@ import os
 class Graphics:
     '''图片处理类
         
-        参数
-        -------
-        infile: 输入文件路径
-        outfile: 输出文件路径
-        '''
+    参数
+    -------
+    infile: 输入文件路径
+    outfile: 输出文件路径
+    '''
     def __init__(self, infile, outfile):
         self.infile = infile
         self.outfile = outfile
-    
+
     def fixed_size(self, width, height):
         """按照固定尺寸处理图片"""
         im = Image.open(self.infile)
         out = im.resize((width, height),Image.ANTIALIAS)
         out.save(self.outfile)
-    
-    
+
+
     def resize_by_width(self, w_divide_h):
         """按照宽度进行所需比例缩放"""
         im = Image.open(self.infile)
@@ -30,8 +30,8 @@ class Graphics:
         y_s = x/w_divide_h
         out = im.resize((x_s, y_s), Image.ANTIALIAS)
         out.save(self.outfile)
-    
-    
+
+
     def resize_by_height(self, w_divide_h):
         """按照高度进行所需比例缩放"""
         im = Image.open(self.infile)
@@ -40,8 +40,8 @@ class Graphics:
         y_s = y
         out = im.resize((x_s, y_s), Image.ANTIALIAS)
         out.save(self.outfile)
-    
-    
+
+
     def resize_by_size(self, size):
         """按照生成图片文件大小进行处理(单位KB)"""
         size *= 1024
@@ -58,9 +58,9 @@ class Graphics:
             shutil.copy(self.infile, self.outfile)
 
 
-def cut_by_ratio(self):
-    """按照图片长宽进行分割
-        
+    def cut_by_ratio(self):
+        """按照图片长宽进行分割
+            
         ------------
         取中间的部分，裁剪成正方形
         """
